@@ -44,4 +44,60 @@ export default function() {
   this.post('/oauth2/revoke', () => {
     return new Mirage.Response(200, {}, {});
   });
+
+  /**
+   * /accounts
+   */
+  this.get('/accounts/:id');
+
+
+  /**
+   * /memberships
+   */
+  this.get('/memberships', ({ memberships }) => {
+    return memberships.all();
+  });
+  this.get('/memberships/:id');
+
+
+  /**
+   * /v1 Account API
+   */
+  this.namespace = '/v1';
+
+
+  /**
+   * /caller-ids
+   */
+  this.get('/caller-ids', ({ callerIds }) => {
+    return callerIds.all();
+  });
+  this.get('/caller-ids/:id');
+
+  /**
+   * /calls
+   */
+  const requiredCalls = ['to'];
+  this.get('/calls', ({ calls }) => {
+    return calls.all();
+  });
+  this.get('/calls/:id');
+  this.post('/calls', function(schema, request) {
+    let attrs = this.normalizedRequestAttrs();
+    let call = schema.calls.create(attrs);
+    if (attrs && attrs.to && attrs.from && attrs.callerIdId) {
+      attrs.action = null;
+      attrs.status = 'queued';
+      // when to/from are included we actually return the childCall
+      let childCall = schema.calls.create({
+        to: attrs.to,
+        from: attrs.from,
+        parentCall: call,
+        status: 'in-progress',
+        callerIdId: attrs.callerIdId,
+      });
+      return childCall;
+    }
+    return call;
+  });
 }

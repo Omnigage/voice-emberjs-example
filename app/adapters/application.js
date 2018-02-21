@@ -2,10 +2,9 @@ import { run, next } from '@ember/runloop';
 import { computed } from '@ember/object';
 import DS from 'ember-data';
 import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
-import UrlTemplates from 'ember-data-url-templates';
 import config from 'voice-example-emberjs/config/environment';
 
-export default DS.JSONAPIAdapter.extend(DataAdapterMixin, UrlTemplates, {
+export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
   host: config.host,
   namespace: 'v1',
   authorizer: 'authorizer:application',
@@ -19,6 +18,4 @@ export default DS.JSONAPIAdapter.extend(DataAdapterMixin, UrlTemplates, {
       'X-Account-Key': config.accountKey,
     };
   }).volatile(),
-
-  urlTemplate: '{+host}/{+namespace}/{pathForType}{/id}',
 });

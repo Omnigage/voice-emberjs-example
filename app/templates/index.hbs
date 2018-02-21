@@ -30,35 +30,39 @@
 
 {{partial "partials/alerts"}}
 
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12">
-      {{#bs-tab as |tab|}}
-        {{#tab.pane title="Make Call"}}
-          {{#bs-form formLayout="horizontal" model=this onSubmit=(action "makeCall") as |form|}}
-            {{#form.element label="Caller ID" placeholder="Caller ID" property="callerId" as |el|}}
-              {{#power-select
-                options=callerIdContent
-                selected=callerId
-                searchField="subject"
-                placeholder="Please select Caller ID"
-                triggerClass="callerId"
-                onchange=(action (mut callerId))
-                as |caller|}}
-                  {{if caller.label (concat caller.label " - ")}}{{caller.phoneNumber}}
-              {{/power-select}}
-            {{/form.element}}
-            {{form.element controlType="text" label="Your Number" placeholder="+14075554444" property="from" required=true}}
-            {{form.element controlType="text" label="Dial Number" placeholder="+4074443333" property="to" required=true}}
-            {{bs-button defaultText="Call" type="primary" buttonType="submit"}}
-          {{/bs-form}}
-        {{/tab.pane}}
-        {{#tab.pane title="Records"}}
-          {{#ember-tabular modelName="call" columnOrder=columnOrder staticParams=staticParams sort=sort isColumnSelect=false as |et|}}
-            {{et.column property="direction" list=listDirection isCustom=false class="text-capitalize"}}
-          {{/ember-tabular}}
-        {{/tab.pane}}
-      {{/bs-tab}}
+{{#if currentAccount}}
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        {{#bs-tab as |tab|}}
+          {{#tab.pane title="Make Call"}}
+            {{#bs-form formLayout="horizontal" model=this onSubmit=(action "makeCall") as |form|}}
+              {{#form.element label="Caller ID" placeholder="Caller ID" property="callerId" as |el|}}
+                {{#power-select
+                  options=callerIdContent
+                  selected=callerId
+                  searchField="subject"
+                  placeholder="Please select Caller ID"
+                  triggerClass="callerId"
+                  onchange=(action (mut callerId))
+                  as |caller|}}
+                    {{if caller.label (concat caller.label " - ")}}{{caller.phoneNumber}}
+                {{/power-select}}
+              {{/form.element}}
+              {{form.element controlType="text" label="Your Number" placeholder="+14075554444" property="from" required=true}}
+              {{form.element controlType="text" label="Dial Number" placeholder="+4074443333" property="to" required=true}}
+              {{bs-button defaultText="Call" type="primary" buttonType="submit"}}
+            {{/bs-form}}
+          {{/tab.pane}}
+          {{#tab.pane title="Records"}}
+            {{#ember-tabular modelName="call" columnOrder=columnOrder staticParams=staticParams sort=sort isColumnSelect=false as |et|}}
+              {{et.column property="direction" list=listDirection isCustom=false class="text-capitalize"}}
+            {{/ember-tabular}}
+          {{/tab.pane}}
+        {{/bs-tab}}
+      </div>
     </div>
   </div>
-</div>
+
+{{/if}}

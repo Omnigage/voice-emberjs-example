@@ -32,13 +32,17 @@ export default Route.extend(UnauthenticatedRouteMixin, {
   },
   failure(response) {
     this.reset();
-    this.set('controller.isFailure', true);
-    this.set('controller.failureMessage', this.get('defaultFailureMessage'));
+    this.setProperties({
+      'controller.isFailure': true,
+      'controller.failureMessage': 'There was an error in attempting to authenticate.',
+    });
 
-    if (get(response, 'error') === 'invalid_grant') {
-      this.set('controller.isAuthFailure', true);
-      this.set('controller.failureMessage',
-        'Invalid credentials, check email/password combination and try again.');
+    if (response === 'invalid_grant') {
+      this.setProperties({
+        'controller.isFailure': true,
+        'controller.isAuthFailure': true,
+        'controller.failureMessage': 'Invalid credentials, check email/password combination and try again.',
+      });
     }
   },
   reset() {

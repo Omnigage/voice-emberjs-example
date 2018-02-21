@@ -2,6 +2,8 @@
   <!-- login form -->
   <h1 class="text-center">Login</h1>
 
+  {{partial "partials/alerts"}}
+
   {{#bs-form formLayout="horizontal" model=this onSubmit=(route-action "authenticate") as |form|}}
     {{form.element controlType="text" label="Email" placeholder="Email" property="identification" required=true}}
     {{form.element controlType="password" label="Password" placeholder="Password" property="password" required=true}}

@@ -10,7 +10,7 @@ export default Controller.extend({
   accountContent: computed(function () {
     return this.store.query('membership', {
       'filter[is-active]': true,
-      sort: '-createdAt',
+      sort: '-created-at',
       include: 'account',
     }).then((memberships) => {
       this.set('currentAccount', memberships.get('firstObject'));
@@ -36,10 +36,10 @@ export default Controller.extend({
   // fed into ember-tabular to filter the table
   staticParams: computed(function () {
     return {
-      include: 'result,createdBy',
+      include: 'result',
     };
   }),
-  columnOrder: ['from', 'to', 'direction', 'result.kind', 'createdBy.firstName', 'createdAt'],
+  columnOrder: ['from', 'to', 'direction', 'result.kind', 'createdAt'],
   listDirection: [
     {
       label: 'Inbound & Outbound',

@@ -33,6 +33,13 @@ export default Controller.extend({
       config.accountKey = this.get('currentAccount.account.key');
     }
   }),
+  reset() {
+    this.setProperties({
+      isSuccess: false,
+      isFailure: false,
+      errors: null,
+    });
+  },
   // fed into ember-tabular to filter the table
   staticParams: computed(function () {
     return {
@@ -56,6 +63,7 @@ export default Controller.extend({
   ],
   actions: {
     makeCall() {
+      this.reset();
       // create call object/record
       let call = this.get('store').createRecord('call', {
         to: this.get('to'),

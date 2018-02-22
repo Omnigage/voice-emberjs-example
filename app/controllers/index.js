@@ -73,7 +73,7 @@ export default Controller.extend({
       });
       // save call record making request to API
       call.save().then(
-        (record) => {
+        () => {
           this.setProperties({
             isSuccess: true,
             successMessage: 'Success! Call was made',

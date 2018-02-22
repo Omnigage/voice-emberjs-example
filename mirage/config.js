@@ -77,12 +77,11 @@ export default function() {
   /**
    * /calls
    */
-  const requiredCalls = ['to'];
   this.get('/calls', ({ calls }) => {
     return calls.all();
   });
   this.get('/calls/:id');
-  this.post('/calls', function(schema, request) {
+  this.post('/calls', function(schema) {
     let attrs = this.normalizedRequestAttrs();
     let call = schema.calls.create(attrs);
     if (attrs && attrs.to && attrs.from && attrs.callerIdId) {

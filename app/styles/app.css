@@ -1,5 +1,7 @@
 .ember-power-select-trigger{
   min-width:250px;
+  height:34px;
+  line-height:2.4;
 }
 
 .tab-pane {

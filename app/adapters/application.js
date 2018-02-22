@@ -1,4 +1,3 @@
-import { run, next } from '@ember/runloop';
 import { computed } from '@ember/object';
 import DS from 'ember-data';
 import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';

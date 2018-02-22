@@ -1,14 +1,9 @@
 <nav class="navbar navbar-default">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="collapsed navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false"> <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href="#" class="navbar-brand">Voice Example</a>
+      <a class="navbar-brand">Voice Example</a>
     </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+    <div>
       <form class="navbar-form navbar-left">
         <div class="form-group">
           {{#power-select
@@ -25,6 +20,9 @@
         </div>
       </form>
     </div>
+    <p class="navbar-text navbar-right navbar-right-adjust">
+      {{#link-to "logout"}}Logout{{/link-to}}
+    </p>
   </div>
 </nav>
 
@@ -39,7 +37,7 @@
       <div class="col-sm-12">
         {{#bs-tab as |tab|}}
           {{#tab.pane title="Make Call"}}
-            {{#bs-form formLayout="horizontal" model=this onSubmit=(action "makeCall") as |form|}}
+            {{#bs-form formLayout="vertical" model=this onSubmit=(action "makeCall") as |form|}}
               {{#form.element label="Caller ID" placeholder="Caller ID" property="callerId" as |el|}}
                 {{#power-select
                   options=callerIdContent

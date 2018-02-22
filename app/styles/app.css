@@ -12,6 +12,10 @@
     padding: 10px;
 }
 
+.navbar-right-adjust{
+  margin-right:0;
+}
+
 .nav-tabs {
     margin-bottom: 0;
 }

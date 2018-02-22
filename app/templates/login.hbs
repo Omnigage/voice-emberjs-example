@@ -2,12 +2,15 @@
   <!-- login form -->
   <h1 class="text-center">Login</h1>
 
-  {{partial "partials/alerts"}}
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      {{partial "partials/alerts"}}
 
-  {{#bs-form formLayout="horizontal" model=this onSubmit=(route-action "authenticate") as |form|}}
-    {{form.element id="identification" controlType="text" label="Email" placeholder="Email" property="identification"}}
-    {{form.element id="password" controlType="password" label="Password" placeholder="Password" property="password"}}
-    {{bs-button defaultText="Submit" type="primary" buttonType="submit"}}
-  {{/bs-form}}
-
+      {{#bs-form formLayout="vertical" model=this onSubmit=(route-action "authenticate") as |form|}}
+        {{form.element id="identification" controlType="text" label="Email" placeholder="Email" property="identification"}}
+        {{form.element id="password" controlType="password" label="Password" placeholder="Password" property="password"}}
+        {{bs-button defaultText="Submit" type="primary" buttonType="submit"}}
+      {{/bs-form}}
+    </div>
+  </div>
 </div>

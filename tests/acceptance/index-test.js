@@ -52,7 +52,6 @@ test('Check for success making a call /', function(assert) {
 
         fillIn('#from-field', '+15554443333');
         fillIn('#to-field', '+14443332222');
-        // set the callerId service by selecting a callerId within the component
         selectChoose('.callerId', 'Main');
 
         click(':submit');

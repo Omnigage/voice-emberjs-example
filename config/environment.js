@@ -48,5 +48,13 @@ module.exports = function(environment) {
     // here you can enable a production-specific feature
   }
 
+  // Set the host.
+  switch(environment) {
+    case 'production':
+      ENV.host = '/api';
+      ENV.domain = 'omnigage.io';
+      break;
+  };
+
   return ENV;
 };

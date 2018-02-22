@@ -16,6 +16,10 @@ module.exports = function(defaults) {
       'extensions': ['js', 'css', 'json', 'ico', 'xml', 'png', 'jpg', 'gif', 'map', 'csv'],
       'prepend': config.assetsURL
     },
+    'storeConfigInMeta': !envProductionLike,
+    'sourcemaps': {
+      enabled: !envProductionLike
+    },
     'ember-bootstrap': {
       'bootstrapVersion': 3,
       'importBootstrapFont': true,

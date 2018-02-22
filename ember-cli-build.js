@@ -7,6 +7,7 @@ const EmberAppConfig = require('./config/environment.js');
 module.exports = function(defaults) {
 
   var environment = EmberApp.env(),
+    envProductionLike = (environment === 'production'),
     config = new EmberAppConfig(environment);
 
   var app = new EmberApp(defaults, {

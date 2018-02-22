@@ -10,7 +10,7 @@ ENVIRONMENT_NAME=$2
 AWS_BUCKET_NAME="examples.omnigage.io"
 
 # Directory for project to reside in
-PREFIX_ASSETS="voice-example-emberjs"
+PREFIX="voice-example-emberjs"
 
 # Ember Deploy configuration
 CONFIG="/* jshint node: true */
@@ -31,7 +31,7 @@ module.exports = function(deployTarget) {
       secretAccessKey: '$AWS_SECRET_KEY',
       bucket: '$AWS_BUCKET_NAME',
       region: '$AWS_REGION',
-      prefix: '$PREFIX_ASSETS'
+      prefix: '$PREFIX'
     },
 
     's3-index': {
@@ -40,7 +40,7 @@ module.exports = function(deployTarget) {
       secretAccessKey: '$AWS_SECRET_KEY',
       bucket: '$AWS_BUCKET_NAME',
       region: '$AWS_REGION',
-      prefix: '$PREFIX_INDEX'
+      prefix: '$PREFIX'
     },
 
     cloudfront: {

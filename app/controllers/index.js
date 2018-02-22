@@ -17,7 +17,7 @@ export default Controller.extend({
       return memberships;
     });
   }),
-  callerIdContent: computed(function () {
+  callerIdContent: computed('currentAccount', function () {
     return DS.PromiseObject.create({
       promise: this.get('store').query('caller-id', {
         'page[offset]': 0,
@@ -28,7 +28,7 @@ export default Controller.extend({
     });
   }),
   setAccountKeyForReqHeaders: observer('currentAccount', function () {
-    // setting the accountKey to be used within any future requests headers as `X-Account-Key`
+    // setting the accountKey to be used within any future request headers as `X-Account-Key`
     if (this.get('currentAccount')) {
       config.accountKey = this.get('currentAccount.account.key');
     }
@@ -40,8 +40,8 @@ export default Controller.extend({
       errors: null,
     });
   },
-  // fed into ember-tabular to filter the table
-  staticParams: computed(function () {
+  // feed into ember-tabular to filter the table
+  staticParams: computed('currentAccount', function () {
     return {
       include: 'result',
     };

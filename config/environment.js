@@ -52,7 +52,7 @@ module.exports = function(environment) {
   switch(environment) {
     case 'production':
       ENV.host = '/api';
-      ENV.domain = 'omnigage.io';
+      ENV.domain = 'examples.omnigage.io';
       break;
   };
 

@@ -3,6 +3,7 @@
 
 module.exports = function(environment) {
   let ENV = {
+    assetsURL: '',
     host: '',
     modulePrefix: 'voice-example-emberjs',
     environment,
@@ -53,6 +54,7 @@ module.exports = function(environment) {
     case 'production':
       ENV.host = '/api';
       ENV.domain = 'examples.omnigage.io';
+      ENV.assetsURL = 'https://examples.omnigage.io/voice-example-emberjs/';
       break;
   };
 

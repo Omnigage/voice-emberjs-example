@@ -3,6 +3,8 @@ import Utils from 'voice-example-emberjs/mirage/helpers/util';
 
 export default function() {
 
+  this.passthrough('/write-coverage');
+
   /**
    * /identity/v1 API
    */

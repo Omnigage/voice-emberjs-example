@@ -14,7 +14,7 @@ export default function() {
     const username = body.get('username');
     const password = body.get('password');
 
-    if (!username && !password) {
+    if (!username && password === '') {
       // If both inputs are empty, simulate an 'invalid_grant'
       return new Mirage.Response(400, {}, {
         error: 'invalid_grant',

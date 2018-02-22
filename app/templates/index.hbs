@@ -52,8 +52,8 @@
                     {{if caller.label (concat caller.label " - ")}}{{caller.phoneNumber}}
                 {{/power-select}}
               {{/form.element}}
-              {{form.element controlType="text" label="Your Number" placeholder="+14075554444" property="from" required=true}}
-              {{form.element controlType="text" label="Dial Number" placeholder="+4074443333" property="to" required=true}}
+              {{form.element id="from" controlType="text" label="Your Number" placeholder="+14075554444" property="from" required=true}}
+              {{form.element id="to" controlType="text" label="Dial Number" placeholder="+4074443333" property="to" required=true}}
               {{bs-button defaultText="Call" type="primary" buttonType="submit"}}
             {{/bs-form}}
           {{/tab.pane}}

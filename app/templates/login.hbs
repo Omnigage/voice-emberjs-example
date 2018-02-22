@@ -5,8 +5,8 @@
   {{partial "partials/alerts"}}
 
   {{#bs-form formLayout="horizontal" model=this onSubmit=(route-action "authenticate") as |form|}}
-    {{form.element controlType="text" label="Email" placeholder="Email" property="identification" required=true}}
-    {{form.element controlType="password" label="Password" placeholder="Password" property="password" required=true}}
+    {{form.element id="identification" controlType="text" label="Email" placeholder="Email" property="identification"}}
+    {{form.element id="password" controlType="password" label="Password" placeholder="Password" property="password"}}
     {{bs-button defaultText="Submit" type="primary" buttonType="submit"}}
   {{/bs-form}}
 

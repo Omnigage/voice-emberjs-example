@@ -1,0 +1,7 @@
+/config/**
+/tests/**
+/vendor/**
+/ember-cli-build.js
+/testem.js
+/app/styles/**
+/mirage/**

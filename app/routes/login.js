@@ -1,3 +1,4 @@
+import { get } from '@ember/object';
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 import UnauthenticatedRouteMixin from 'ember-simple-auth/mixins/unauthenticated-route-mixin';
@@ -36,7 +37,7 @@ export default Route.extend(UnauthenticatedRouteMixin, {
       'controller.failureMessage': 'There was an error in attempting to authenticate.',
     });
 
-    if (response === 'invalid_grant') {
+    if (get(response, 'error') === 'invalid_grant') {
       this.setProperties({
         'controller.isFailure': true,
         'controller.isAuthFailure': true,

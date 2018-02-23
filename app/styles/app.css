@@ -19,3 +19,17 @@
 .nav-tabs {
     margin-bottom: 0;
 }
+
+.iti-flag{
+  background-image: url(images/intl-tel-input/flags@2x.png);
+}
+.intl-tel-input{
+  width:100%;
+  display:block;
+}
+.intl-tel-input input.form-control:focus{
+  z-index:0;
+}
+.intl-tel-input .country-list{
+  z-index:3;
+}

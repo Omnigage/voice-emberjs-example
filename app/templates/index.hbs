@@ -50,8 +50,12 @@
                     {{if caller.label (concat caller.label " - ")}}{{caller.phoneNumber}}
                 {{/power-select}}
               {{/form.element}}
-              {{form.element id="from" controlType="text" label="Your Number" placeholder="+14075554444" property="from" required=true}}
-              {{form.element id="to" controlType="text" label="Dial Number" placeholder="+4074443333" property="to" required=true}}
+              {{#form.element label="Your Number" id="from" property="from" as |el|}}
+                {{app-input-phone value=el.value type="tel" class="form-control phone" oninput=(action (mut el.value) value="target.value") onchange=(action (mut el.value) value="target.value") id=el.id}}
+              {{/form.element}}
+              {{#form.element label="Dial Number" id="to" property="to" as |el|}}
+                {{app-input-phone value=el.value type="tel" class="form-control phone" oninput=(action (mut el.value) value="target.value") onchange=(action (mut el.value) value="target.value") id=el.id}}
+              {{/form.element}}
               {{bs-button defaultText="Call" type="primary" buttonType="submit"}}
             {{/bs-form}}
           {{/tab.pane}}

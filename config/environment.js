@@ -52,9 +52,10 @@ module.exports = function(environment) {
   // Set the host.
   switch(environment) {
     case 'production':
-      ENV.host = '/api';
       ENV.domain = 'examples.omnigage.io';
-      ENV.assetsURL = 'https://examples.omnigage.io/voice-example-emberjs/';
+      ENV.baseURL = '/voice-example-emberjs/';
+      ENV.host = `https://${ENV.domain}/api`;
+      ENV.assetsURL = `https://${ENV.domain + ENV.baseURL}`;
       break;
   };
 

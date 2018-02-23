@@ -1,0 +1,18 @@
+{{#if isSuccess}}
+  {{#bs-alert type="success"}}
+    {{successMessage}}
+  {{/bs-alert}}
+{{/if}}
+
+{{#if isFailure}}
+  {{#bs-alert type="danger"}}
+    {{failureMessage}}
+    {{#if errors}}
+      <ul>
+        {{#each errors as |error|}}
+          <li>{{error.detail}}</li>
+        {{/each}}
+      </ul>
+    {{/if}}
+  {{/bs-alert}}
+{{/if}}

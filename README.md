@@ -1,22 +1,25 @@
-# voice-example-emberjs
+# Omnigage Voice Ember.js Example [![CircleCI](https://circleci.com/gh/Omnigage/voice-example-emberjs.svg?style=shield&circle-token=d42bb02a14bf513842aab6a682e6c26269596778)](https://circleci.com/gh/Omnigage/voice-example-emberjs) [![Maintainability](https://api.codeclimate.com/v1/badges/fcb957b57438dc298b05/maintainability)](https://codeclimate.com/github/Omnigage/voice-example-emberjs/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/fcb957b57438dc298b05/test_coverage)](https://codeclimate.com/github/Omnigage/voice-example-emberjs/test_coverage) 
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+A simple Ember.js client interfacing with the Omnigage API for making calls and viewing call logs.
+
+This client can be viewed live here: https://examples.omnigage.io/voice-example-emberjs/
 
 ## Prerequisites
 
 You will need the following things properly installed on your computer.
 
-* [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with NPM)
-* [Ember CLI](https://ember-cli.com/)
-* [Google Chrome](https://google.com/chrome/)
+* [Git](http://git-scm.com/)
+* [Node.js](http://nodejs.org/)
+* [Yarn](http://yarnpkg.com/)
+* [Ember CLI](http://ember-cli.com/)
+* [Chrome Headless](https://chromium.googlesource.com/chromium/src/+/lkgr/headless/README.md)
 
 ## Installation
 
-* `git clone <repository-url>` this repository
+* `git clone https://github.com/Omnigage/voice-example-emberjs.git` this repository
 * `cd voice-example-emberjs`
-* `npm install`
+* Change into the new directory
+* `./tools/setup.sh`
 
 ## Running / Development
 
@@ -40,7 +43,7 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 ### Deploying
 
-Specify what it takes to deploy your app.
+* `git push origin master:production`
 
 ## Further Reading / Useful Links
 

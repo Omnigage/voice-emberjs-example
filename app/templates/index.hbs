@@ -35,8 +35,8 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        {{#bs-tab as |tab|}}
-          {{#tab.pane title="Make Call"}}
+        {{#bs-tab onChange=(action "onChange") as |tab|}}
+          {{#tab.pane id="make-call" title="Make Call"}}
             {{#bs-form formLayout="vertical" model=this onSubmit=(action "makeCall") as |form|}}
               {{#form.element label="Caller ID" placeholder="Caller ID" property="callerId" as |el|}}
                 {{#power-select
@@ -50,12 +50,16 @@
                     {{if caller.label (concat caller.label " - ")}}{{caller.phoneNumber}}
                 {{/power-select}}
               {{/form.element}}
-              {{form.element id="from" controlType="text" label="Your Number" placeholder="+14075554444" property="from" required=true}}
-              {{form.element id="to" controlType="text" label="Dial Number" placeholder="+4074443333" property="to" required=true}}
+              {{#form.element label="Your Number" id="from" property="from" as |el|}}
+                {{app-input-phone value=el.value type="tel" class="form-control phone" oninput=(action (mut el.value) value="target.value") onchange=(action (mut el.value) value="target.value") id=el.id}}
+              {{/form.element}}
+              {{#form.element label="Dial Number" id="to" property="to" as |el|}}
+                {{app-input-phone value=el.value type="tel" class="form-control phone" oninput=(action (mut el.value) value="target.value") onchange=(action (mut el.value) value="target.value") id=el.id}}
+              {{/form.element}}
               {{bs-button defaultText="Call" type="primary" buttonType="submit"}}
             {{/bs-form}}
           {{/tab.pane}}
-          {{#tab.pane title="Records"}}
+          {{#tab.pane id="records" title="Records"}}
             {{#ember-tabular modelName="call" columnOrder=columnOrder staticParams=staticParams sort=sort isColumnSelect=false as |et|}}
               {{et.column property="direction" list=listDirection isCustom=false class="text-capitalize"}}
             {{/ember-tabular}}

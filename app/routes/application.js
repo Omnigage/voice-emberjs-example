@@ -4,4 +4,8 @@ import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mi
 
 Route.reopenClass(SecureDefaultRouteFactory);
 
-export default Route.extend(ApplicationRouteMixin);
+export default Route.extend(ApplicationRouteMixin, {
+  sessionInvalidated() {
+    window.location.replace('/login');
+  },
+});

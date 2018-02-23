@@ -1,4 +1,6 @@
-# Omnigage Voice Ember.js Example [![CircleCI](https://circleci.com/gh/Omnigage/voice-example-emberjs.svg?style=shield&circle-token=d42bb02a14bf513842aab6a682e6c26269596778)](https://circleci.com/gh/Omnigage/voice-example-emberjs) [![Maintainability](https://api.codeclimate.com/v1/badges/fcb957b57438dc298b05/maintainability)](https://codeclimate.com/github/Omnigage/voice-example-emberjs/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/fcb957b57438dc298b05/test_coverage)](https://codeclimate.com/github/Omnigage/voice-example-emberjs/test_coverage) 
+# Omnigage Voice Ember.js Example
+
+[![CircleCI](https://circleci.com/gh/Omnigage/voice-example-emberjs.svg?style=shield&circle-token=d42bb02a14bf513842aab6a682e6c26269596778)](https://circleci.com/gh/Omnigage/voice-example-emberjs) [![Maintainability](https://api.codeclimate.com/v1/badges/fcb957b57438dc298b05/maintainability)](https://codeclimate.com/github/Omnigage/voice-example-emberjs/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/fcb957b57438dc298b05/test_coverage)](https://codeclimate.com/github/Omnigage/voice-example-emberjs/test_coverage) 
 
 A simple Ember.js client interfacing with the Omnigage API for making calls and viewing call logs.
 

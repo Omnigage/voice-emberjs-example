@@ -89,5 +89,11 @@ export default Controller.extend({
         }
       );
     },
+    // force ember-tabular to make request
+    onChange(tabId) {
+      if (tabId === 'records') {
+        this.notifyPropertyChange('staticParams');
+      }
+    },
   },
 });

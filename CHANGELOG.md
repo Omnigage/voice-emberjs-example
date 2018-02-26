@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
 ### Changed
+- Fixes logout issue and improves code coverage quality.
 
 ### Fixed
 

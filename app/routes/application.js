@@ -7,7 +7,6 @@ Route.reopenClass(SecureDefaultRouteFactory);
 
 export default Route.extend(ApplicationRouteMixin, {
   sessionInvalidated() {
-    console.log('hit it', `${config.baseURL}login`);
     window.location.replace(`${config.baseURL}login`);
   },
 });

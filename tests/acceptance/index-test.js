@@ -29,6 +29,8 @@ module('Acceptance: Index', {
 });
 
 test('Check for X-Account-Key in requestHeaders /', function(assert) {
+    // ensure that accountId does not leak from other tests
+    config.accountId = null;
     authenticateSession(application);
     visit('/');
 
@@ -70,6 +72,53 @@ test('Check for success making a call /', function(assert) {
     });
 });
 
+test('Check for failure making a call /', function(assert) {
+    server.post('/calls',
+        {
+            errors: [
+                {
+                    'status': '400',
+                    'title':  'Bad Request',
+                    'detail': 'Generic error adding call.'
+                },
+                {
+                    'title':  'Validation',
+                    'detail': 'The field data.attributes.to is required.',
+                    'source': {
+                        'pointer': '/data/attributes/to',
+                    },
+                },
+                {
+                    'title':  'Validation',
+                    'detail': 'Generic error with source.parameter',
+                    'source': {
+                        'parameter': 'filter[to]',
+                    },
+                },
+            ]
+        },
+        400
+    );
+    authenticateSession(application);
+    visit('/');
+
+    andThen(function() {
+        assert.equal(currentPath(), 'index', 'Redirect to index');
+
+        fillIn('#from-field', '+15554443333');
+        fillIn('#to-field', '+14443332222');
+        selectChoose('.callerId', 'Main');
+
+        click(':submit');
+    });
+
+    andThen(function() {
+        assertIn(assert, find('.alert').text(), 'not successful', 'Check for general error message.');
+        assert.equal(find('.alert li').length, 3, 'Ensure 3 errors in error list, generic errors.');
+        assertIn(assert, find('.alert li').text(), 'Generic error adding call', 'Check for generic error message in list.');
+    });
+});
+
 test('Check for expected content loading call logs /', function(assert) {
     server.db.calls.update(1, {
         to: '+15554443333',
@@ -89,5 +138,38 @@ test('Check for expected content loading call logs /', function(assert) {
         assert.equal(cells.eq(1).text().trim(), '+15554443333', 'Check for contact to.');
         assert.equal(cells.eq(2).text().trim(), 'inbound', 'Check for direction.');
         assert.equal(cells.eq(3).text().trim(), '2020-01-01T10:00:00.000+00:00', 'Check for created at.');
+    });
+});
+
+test('Check for refreshed request clicking records /', function(assert) {
+    server.db.calls.update(1, {
+        to: '+15554443333',
+        from: '+15554443333',
+        direction: 'inbound',
+        createdAt: '2020-01-01T10:00:00.000+00:00',
+    });
+    authenticateSession(application);
+    visit('/');
+
+    andThen(function() {
+        assert.equal(currentPath(), 'index');
+    });
+
+    andThen(function() {
+        var requests = getPretenderRequest(server, 'GET', 'calls');
+        var request1 = requests[0];
+
+        assert.equal(requests.length, 1, 'Only 1 request to fetch /calls');
+        assert.equal(request1.url, '/v1/calls?include=result&page%5Blimit%5D=10&page%5Boffset%5D=0&sort=-created-at');
+
+        click('.nav-link:eq(1)');
+    });
+
+    andThen(function() {
+        var requests = getPretenderRequest(server, 'GET', 'calls');
+        var request1 = requests[0];
+
+        assert.equal(requests.length, 2, '2 requests to fetch /calls');
+        assert.equal(request1.url, '/v1/calls?include=result&page%5Blimit%5D=10&page%5Boffset%5D=0&sort=-created-at');
     });
 });

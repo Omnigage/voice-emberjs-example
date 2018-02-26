@@ -1,4 +1,3 @@
-import { computed } from '@ember/object';
 import DS from 'ember-data';
 
 const attr = DS.attr;
@@ -7,12 +6,6 @@ export default DS.Model.extend({
   parentCall: DS.belongsTo('call', { async: true, inverse: null }),
   callerId: DS.belongsTo('caller-id', { async: true, inverse: null }),
   result: DS.belongsTo('call-result', { async: true, inverse: null }),
-
-  // will not force a FETCH to grab full record
-  // will reference id already within the local store instead
-  parentCallId: computed('parentCall', function () {
-    return this.belongsTo('parentCall').id();
-  }),
 
   to: attr('phoneFormat'),
   from: attr('phoneFormat'),

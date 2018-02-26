@@ -8,11 +8,6 @@ export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
   namespace: 'v1',
   authorizer: 'authorizer:application',
   headers: computed(function () {
-    if (config.accountId) {
-      return {
-        'X-Account-ID': config.accountId,
-      };
-    }
     return {
       'X-Account-Key': config.accountKey,
     };

@@ -5,6 +5,7 @@ module.exports = function(environment) {
   let ENV = {
     assetsURL: '',
     host: '',
+    baseURL: '',
     modulePrefix: 'voice-example-emberjs',
     environment,
     rootURL: '/',

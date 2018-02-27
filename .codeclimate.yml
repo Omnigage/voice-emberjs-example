@@ -1,0 +1,27 @@
+languages:
+   JavaScript: true
+engines:
+    fixme:
+        enabled: true
+    eslint:
+        enabled: true
+    watson:
+        enabled: true
+    duplication:
+        enabled: true
+        config:
+            languages:
+                javascript:
+                     mass_threshold: 81
+ratings:
+   paths:
+   - "app/**"
+exclude_paths:
+- "config/**"
+- "tests/**"
+- "vendor/**"
+- "ember-cli-build.js"
+- "testem.js"
+- "app/styles/**"
+- "mirage/**"
+- "app/router.js"
